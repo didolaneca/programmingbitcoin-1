@@ -142,7 +142,8 @@ class Point:
 
     def __ne__(self, other):
         # this should be the inverse of the == operator
-        raise NotImplementedError
+        return self.x != other.x or self.y != other.y \
+            or self.a != other.a or self.b != other.b
 
     def __repr__(self):
         if self.x is None:
@@ -154,7 +155,7 @@ class Point:
     def __add__(self, other):  # <2>
         if self.a != other.a or self.b != other.b:
             raise TypeError('Points {}, {} are not on the same curve'.format
-            (self, other))
+                            (self, other))
 
         if self.x is None:  # <3>
             return other
